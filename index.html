@@ -650,10 +650,10 @@ mark.cm{background:var(--cur-wash);color:inherit;border-radius:2px}
 .exfig{margin:1.4rem 0 0}
 .exfig img{display:block;width:100%;height:auto;border:1px solid var(--rule-2);border-radius:4px}
 .exfig img{cursor:zoom-in}
-.zoom{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;overflow:auto}
-.zoom::backdrop{background:rgba(20,16,17,.88)}
-.zoom img{display:block;margin:auto;max-width:96vw;max-height:96vh;cursor:zoom-out;position:absolute;inset:0;width:auto;height:auto;margin:auto;object-fit:contain}
-.zoom .zx{position:fixed;top:.8rem;right:1rem;z-index:1;font:inherit;font-size:1.6rem;line-height:1;color:#fff;background:rgba(0,0,0,.4);border:0;border-radius:50%;width:2.4rem;height:2.4rem;cursor:pointer}
+.imgzoom{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;overflow:auto}
+.imgzoom::backdrop{background:rgba(20,16,17,.88)}
+.imgzoom img{display:block;margin:auto;max-width:96vw;max-height:96vh;cursor:zoom-out;position:absolute;inset:0;width:auto;height:auto;margin:auto;object-fit:contain}
+.imgzoom .zx{position:fixed;top:.8rem;right:1rem;z-index:1;font:inherit;font-size:1.6rem;line-height:1;color:#fff;background:rgba(0,0,0,.4);border:0;border-radius:50%;width:2.4rem;height:2.4rem;cursor:pointer}
 </style>
 <div class="topbar"><div class="topbar-in">
   <a class="wordmark" href="#top"><b>MedLapse</b></a>
@@ -2658,6 +2658,19 @@ function setupControls() {
   });
   window.addEventListener("hashchange", openFromHash);
 }
+})();
+</script>
+<dialog class="imgzoom" id="zoomDlg" aria-label="Enlarged figure"><button class="zx" type="button" aria-label="Close">&times;</button><img alt=""></dialog>
+<script>
+(function(){
+  var d=document.getElementById('zoomDlg'),im=d.querySelector('img');
+  document.querySelectorAll('.exfig img').forEach(function(f){
+    f.tabIndex=0;f.setAttribute('role','button');f.title='Click to enlarge';
+    function open(){im.src=f.src;im.alt=f.alt;d.showModal();}
+    f.addEventListener('click',open);
+    f.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
+  });
+  d.addEventListener('click',function(){d.close();});
 })();
 </script>
 </body>
