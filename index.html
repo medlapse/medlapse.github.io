@@ -645,6 +645,15 @@ mark.cm{background:var(--cur-wash);color:inherit;border-radius:2px}
 #lg .g-tip{opacity:1}
 @media (max-width:900px){#lg .app{height:auto}}
 @media (max-width:900px){#lg .panel{max-height:34rem;overflow:auto}}
+.disclaimer{margin:1.6rem auto 0;max-width:var(--col);text-align:left;font-size:.98rem;line-height:1.55;color:var(--ink-2);background:var(--wash);border-left:3px solid var(--crimson);padding:.75rem 1rem;border-radius:0 4px 4px 0}
+.disclaimer b{color:var(--crimson-ink)}
+.exfig{margin:1.4rem 0 0}
+.exfig img{display:block;width:100%;height:auto;border:1px solid var(--rule-2);border-radius:4px}
+.exfig img{cursor:zoom-in}
+.zoom{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;overflow:auto}
+.zoom::backdrop{background:rgba(20,16,17,.88)}
+.zoom img{display:block;margin:auto;max-width:96vw;max-height:96vh;cursor:zoom-out;position:absolute;inset:0;width:auto;height:auto;margin:auto;object-fit:contain}
+.zoom .zx{position:fixed;top:.8rem;right:1rem;z-index:1;font:inherit;font-size:1.6rem;line-height:1;color:#fff;background:rgba(0,0,0,.4);border:0;border-radius:50%;width:2.4rem;height:2.4rem;cursor:pointer}
 </style>
 <div class="topbar"><div class="topbar-in">
   <a class="wordmark" href="#top"><b>MedLapse</b></a>
@@ -662,6 +671,8 @@ mark.cm{background:var(--cur-wash);color:inherit;border-radius:2px}
   <div class="authors">Viet Pham<sup>1</sup>, &nbsp;Jinjin Cai<sup>2</sup>, &nbsp;Jing Su<sup>2</sup>, &nbsp;Thai Le<sup>1</sup></div>
   <div class="affil"><sup>1</sup>Department of Computer Science, Indiana University &nbsp;·&nbsp; <sup>2</sup>Indiana University School of Medicine</div>
   <div class="linkrow" id="linkrow"></div>
+
+  <div class="disclaimer" role="note"><b>Note.</b> Our finding is not a criticism of the authors of any study cited. Science evolves, and revising a finding is how it works. Our concern is how AI present knowledge, not the scientists who produced it.</div>
 
   <div class="tldr">
     <p>Biomedical evidence keeps changing: findings are revised, contradicted or overturned. Language models answer from what they memorised during pretraining, so they can keep giving the old answer. <span class="sc-word" style="font-variant-caps:small-caps">MedLapse</span> measures this with <b>1,787 findings that their own authors corrected</b> in later versions of medRxiv preprints. Each corrected finding is paired with an unchanged claim from the same paper, so a stale answer can be traced to stale memory rather than to a model that never saw the paper.</p>
